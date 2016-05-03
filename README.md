@@ -1,4 +1,3 @@
-![alt text](https://raw.githubusercontent.com/chrisbanes/cheesesquare/master/art/icon.png)
 
 Cheesesquare Sample
 ===================================
@@ -11,13 +10,13 @@ some of the important features in the Design library:
 - View anchoring
 - NavigationView
 - Snackbar
+- ButterKnife
 
 Pre-requisites
 --------------
 
-- Android SDK v22
-- Android Build Tools v22.0.1
-- Android Support Repository r16 (for v22.2.1)
+- Android SDK v23
+- Android Build Tools v23.0.1
 
 License
 -------

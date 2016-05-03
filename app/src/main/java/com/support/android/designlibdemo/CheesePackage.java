@@ -18,7 +18,7 @@ package com.support.android.designlibdemo;
 
 import java.util.Random;
 
-public class Cheeses {
+public class CheesePackage {
 
     private static final Random RANDOM = new Random();
 

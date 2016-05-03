@@ -19,47 +19,55 @@ package com.support.android.designlibdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.support.android.designlibdemo.constant.Extra;
 
-import java.util.Random;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class CheeseDetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "cheese_name";
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout mToolbarLayout;
+
+    @BindView(R.id.backdrop)
+    ImageView mImageView;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        Intent intent = getIntent();
-        final String cheeseName = intent.getStringExtra(EXTRA_NAME);
+        ButterKnife.bind(this);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(cheeseName);
+        Intent intent = getIntent();
+        String cheeseName = intent.getStringExtra(Extra.CHEESE_NAME);
+        mToolbarLayout.setTitle(cheeseName);
 
-        loadBackdrop();
-    }
-
-    private void loadBackdrop() {
-        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(Cheeses.getRandomCheeseDrawable()).centerCrop().into(imageView);
+        Glide.with(this).load(CheesePackage.getRandomCheeseDrawable()).centerCrop().into(mImageView);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+//                NavUtils.navigateUpFromSameTask(this);
+                break;
+        }
+
         return true;
     }
 }
