@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,15 +16,22 @@
 
 <resources>
 
-    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
-    </style>
+    <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"></style>
 
     <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#673AB7</item>
         <item name="colorPrimaryDark">#512DA8</item>
         <item name="colorAccent">#FF4081</item>
         <item name="android:windowBackground">@color/window_background</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+        <item name="android:windowAnimationStyle">@style/Base.Theme.DesignDemo.ActivityAnimation
+        </item>
+    </style>
+
+    <style name="Base.Theme.DesignDemo.ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/right_out</item>
     </style>
 
     <style name="Widget.CardContent" parent="android:Widget">
@@ -35,5 +41,4 @@
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
-
 </resources>

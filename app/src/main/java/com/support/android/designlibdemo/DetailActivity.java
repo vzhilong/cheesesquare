@@ -19,7 +19,6 @@ package com.support.android.designlibdemo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -64,7 +63,6 @@ public class DetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-//                NavUtils.navigateUpFromSameTask(this);
                 break;
         }
 

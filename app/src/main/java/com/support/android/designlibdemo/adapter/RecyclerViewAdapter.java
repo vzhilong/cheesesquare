@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private TypedValue mTypedValue = new TypedValue();
-    private int mBackground;
     private List<String> mValues;
+
+    private int mSelectableBackground;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         String mBoundString;
@@ -52,16 +52,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public RecyclerViewAdapter(Context context, List<String> items) {
-        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
-        mBackground = mTypedValue.resourceId;
         mValues = items;
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.selectableItemBackground, typedValue, true);
+        mSelectableBackground = typedValue.resourceId;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
-        view.setBackgroundResource(mBackground);
+        view.setBackgroundResource(mSelectableBackground);
         return new ViewHolder(view);
     }
 

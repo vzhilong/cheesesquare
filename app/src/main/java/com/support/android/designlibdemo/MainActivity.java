@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Here's action click", Snackbar.LENGTH_LONG).show();
             }
         });
-
     }
 
     @Override
